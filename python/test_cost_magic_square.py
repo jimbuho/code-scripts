@@ -1,4 +1,10 @@
-#!/bin/python3
+"""
+
+Test Hackerrank Magic Square cost transformation
+
+@author dgonzalez
+
+"""
 
 import math
 import os
