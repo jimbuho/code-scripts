@@ -138,7 +138,7 @@ class BFS:
         return None
 
 
-def displayPathtoPrincess(n, grid):
+def main(n, grid):
     """ Print all moves the robot has to do to rescue the princess"""
     start = datetime.datetime.now()
 
@@ -166,4 +166,4 @@ game = [
     ['p','-','-'],
 ]
 
-displayPathtoPrincess(3, game)
+main(3, game)
