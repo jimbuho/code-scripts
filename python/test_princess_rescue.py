@@ -119,11 +119,9 @@ class BFS:
             return None
         
         while queue:
-            #print('Queue BEFORE', [[n.name for n in q] for q in queue])
             path = queue.pop(0)
             node = path[-1]
-            #print('Queue AFTER', [[n.name for n in q] for q in queue])
-            
+                        
             if node not in explored:
                 for neighbour in node.neighbours:
                     new_path = list(path)
