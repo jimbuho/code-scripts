@@ -1,10 +1,12 @@
 """
 
-Test Hackerrank IA Princess Rescue
+Test Hackerrank IA Princess Rescue in Python
 
 @author dgonzalez
 
 """
+import datetime
+
 class Neighbour:
     """
 
@@ -29,6 +31,9 @@ class Node:
     def get_neighbour(self, node):
         """ Returns the node neighbour by name """
         return next((x for x in self.neighbours if x.name == node.name), None)
+
+    def __str__(self):
+        return self.name
 
 class Graph:
     """
@@ -110,31 +115,35 @@ class BFS:
             return None
          
         if start == goal:
-            print("Start and Goal are the same")
+            print("Start and Goal are same")
             return None
         
         while queue:
+            #print('Queue BEFORE', [[n.name for n in q] for q in queue])
             path = queue.pop(0)
             node = path[-1]
+            #print('Queue AFTER', [[n.name for n in q] for q in queue])
             
             if node not in explored:
                 for neighbour in node.neighbours:
                     new_path = list(path)
                     new_path.append( self.graph.get_node(neighbour.name) )
                     queue.append(new_path)
-                     
+            
                     # The robot achieves the goal
                     if neighbour.name == goal.name:                        
                         return new_path
 
                 explored.append(node)
-     
+        
         print("The path to goal was not reached")
         return None
 
 
 def displayPathtoPrincess(n, grid):
     """ Print all moves the robot has to do to rescue the princess"""
+    start = datetime.datetime.now()
+
     graph = Graph(grid, n) 
     graph.build()
 
@@ -148,6 +157,10 @@ def displayPathtoPrincess(n, grid):
 
         for p in route:
             print(p)
+
+    end = datetime.datetime.now()
+    timelapse = start - end
+    print("Execution Timelapse:", timelapse.microseconds, "microseconds")
 
 game = [
     ['-','m','-'],
